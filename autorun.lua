@@ -34,12 +34,12 @@ elements.element(meat, elements.element(elements.DEFAULT_PT_CLST))
 elements.property(meat, "Name", "MEAT")
 elements.property(meat, "Description", "Meat. Can be cooked.")
 elements.property(meat, "Colour", 0xDE332F)
-elements.property(meat, "HighTemperature", 80)
+elements.property(meat, "HighTemperature", 120)
 elements.property(meat, "HighTemperatureTransition", -1)
 
 local function meatUpdate(i,x,y,s,nt)  
     local currentTemp = sim.partProperty(i, "temp")
-    if currentTemp > 80 and math.random(1, 10000) <= currentTemp * currentTemp then
+    if currentTemp > 80+273.15 and math.random(1, 10000) <= currentTemp * currentTemp then
         sim.partChangeType(i, elem.MOD_PT_CMET)
     end
 end
@@ -52,12 +52,12 @@ elements.element(cmet, elements.element(elements.DEFAULT_PT_CLST))
 elements.property(cmet, "Name", "CMET")
 elements.property(cmet, "Description", "Cooked Meat.")
 elements.property(cmet, "Colour", 0x4B2D12)
-elements.property(cmet, "HighTemperature", 200)
+elements.property(cmet, "HighTemperature", 300)
 elements.property(cmet, "HighTemperatureTransition", -1)
 
 local function cmetUpdate(i,x,y,s,nt)  
     local currentTemp = sim.partProperty(i, "temp")
-    if currentTemp > 200 and math.random(1, 10000) <= currentTemp * currentTemp / 100 then
+    if currentTemp > 200+273.15 and math.random(1, 10000) <= currentTemp * currentTemp / 100 then
         sim.partChangeType(i, elem.DEFAULT_PT_BCOL)
     end
 end
